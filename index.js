@@ -3,6 +3,7 @@ const cors = require('cors');
 const { URLModel } = require("./Model/url.model");
 const { urlRouter} = require('./routes/url');
 const { connection } = require('./configs/db');
+const { userrouter } = require('./routes/user');
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,7 @@ const corsOptions = {
   app.use(cors(corsOptions));
 
   app.use('/url', urlRouter);
+  app.use('/user',userrouter);
 
   app.get("/:shortId",async(req,res)=>{
 
